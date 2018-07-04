@@ -9,9 +9,6 @@ IPSET=ipset
 IPSET_BIN=/sbin/${IPSET}
 IPSET_DATA=/etc/${IPSET}.conf
 
-IPTABLES_CONFIG=/etc/iptables/rules.v4
-IP6TABLES_CONFIG=/etc/iptables/rules.v6
-
 TMP_FIFO=/tmp/${IPSET}.$$
 
 if [[ ! -x ${IPSET_BIN} ]]; then
@@ -25,10 +22,6 @@ trap "rm -f \$CLEAN_FILES" EXIT
 # Default ipset configuration:
 [[ -z $IPSET_SAVE_ON_STOP ]] && IPSET_SAVE_ON_STOP=no		# Overridden by ip(6)tables IP(6)TABLES_SAVE_ON_STOP
 [[ -z $IPSET_SAVE_ON_RESTART ]] && IPSET_SAVE_ON_RESTART=no	# Overridden by ip(6)tables IP(6)TABLES_SAVE_ON_RESTART
-
-# Load iptables configuration(s)
-[[ -f "$IPTABLES_CONFIG" ]] && . "$IPTABLES_CONFIG"
-[[ -f "$IP6TABLES_CONFIG" ]] && . "$IP6TABLES_CONFIG"
 
 # It doesn't make sense to save iptables config and not our config
 [[ ${IPTABLES_SAVE_ON_STOP} = yes || ${IP6TABLES_SAVE_ON_STOP} = yes ]] && IPSET_SAVE_ON_STOP=yes
