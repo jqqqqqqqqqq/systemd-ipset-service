@@ -3,10 +3,9 @@ The missing ipset service configure file for CentOS/RHEL 7
 
 ### How to use this
 ```
-#mkdir /usr/libexec/ipset /etc/ipset
-#cp -p ipset.start-stop /usr/libexec/ipset/ipset.start-stop
-#cp -p ipset.service /usr/lib/systemd/system/ipset.service
-#chmod 755 /usr/lib/systemd/system/ipset.service /usr/libexec/ipset/ipset.start-stop
+#cp -p ipset.start-stop /usr/local/bin/ipset.start-stop
+#cp -p ipset.service /lib/systemd/system/ipset.service
+#chmod 755 /lib/systemd/system/ipset.service /usr/local/bin/ipset.start-stop
 ```
 
 ### Start with system boot
@@ -22,7 +21,7 @@ This ipset service will boot before iptables and network service.
 Save your ipset configution first.
 
 ```
-#ipset save > /etc/ipset/ipset
+#ipset save > /etc/ipset.conf
 ```
 
 

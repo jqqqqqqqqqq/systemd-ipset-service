@@ -1,18 +1,18 @@
 [Unit]
 Description=IP sets for iptables
-Before=iptables.service
-Before=ip6tables.service
+Before=netfilter-persistent.service
+Before=network-pre.target
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/libexec/ipset/ipset.start-stop start
-ExecStop=/usr/libexec/ipset/ipset.start-stop stop
-ExecReload=/usr/libexec/ipset/ipset.start-stop reload
+ExecStart=/usr/local/bin/ipset.start-stop start
+ExecStop=/usr/local/bin/ipset.start-stop stop
+ExecReload=/usr/local/bin/ipset.start-stop reload
 # Save current ipset entries on stop/restart.
 #   Value: yes|no,  default: no
-# Saves all ipsets to /etc/sysconfig/ipset if ipset gets stopped
-Environment=IPSET_SAVE_ON_STOP=no IPSET_SAVE_ON_RESTART=no
+# Saves all ipsets to /etc/ipset.conf if ipset gets stopped
+Environment=IPSET_SAVE_ON_STOP=yes IPSET_SAVE_ON_RESTART=no
 
 [Install]
 WantedBy=basic.target

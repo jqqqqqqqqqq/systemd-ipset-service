@@ -2,15 +2,15 @@
 #
 # ipset      Start and stop ipset firewall sets
 #
-# config: /etc/ipset/ipset
+# config: /etc/ipset
 #
 
 IPSET=ipset
-IPSET_BIN=/usr/sbin/${IPSET}
-IPSET_DATA=/etc/${IPSET}/${IPSET}
+IPSET_BIN=/sbin/${IPSET}
+IPSET_DATA=/etc/${IPSET}.conf
 
-IPTABLES_CONFIG=/etc/sysconfig/iptables-config
-IP6TABLES_CONFIG=${IPTABLES_CONFIG/iptables/ip6tables}
+IPTABLES_CONFIG=/etc/iptables/rules.v4
+IP6TABLES_CONFIG=/etc/iptables/rules.v6
 
 TMP_FIFO=/tmp/${IPSET}.$$
 
