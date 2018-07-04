@@ -1,5 +1,5 @@
-# systemd-ipset-service by Bro Hui
-The missing ipset service configure file for CentOS/RHEL 7
+# systemd-ipset-service by Bro Hui & jqqqqqqqqqq
+The missing ipset service configure file for Debian/Ubuntu
 
 ### How to use this
 ```
